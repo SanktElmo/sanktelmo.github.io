@@ -1,12 +1,5 @@
 services:
   - type: web
     name: flask-barcode-app
-    env: python
-    buildCommand: |
-      apt-get update
-      apt-get install -y tesseract-ocr
-      echo "Tesseract version:"
-      tesseract --version
-      pip install -r requirements.txt
-    startCommand: gunicorn __init__:app
-
+    env: docker
+    dockerfilePath: ./Dockerfile
