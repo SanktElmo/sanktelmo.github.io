@@ -1,8 +1,8 @@
 import os
 from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
-import barcode_scanner as bs
-import api_call as api
+import app.barcode_scanner as bs
+import app.api_call as api
 import csv
 
 app = Flask(__name__)
