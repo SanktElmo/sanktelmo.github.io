@@ -1,18 +1,18 @@
-import pyzbar
-from PIL import Image
+import cv2
+import pyzxing  # Barcode Decoder
 
 def scan_barcode(bild_pfad):
-    # Bild laden
-    bild = Image.open(bild_pfad)
-    
-    # Barcode/QR-Code decodieren
-    barcodes = pyzbar.decode(bild)
-    
-    # Die erste gefundene Nummer ausgeben
-    if barcodes:
-        for barcode in barcodes:
-            barcode_daten = barcode.data.decode("utf-8")
-            return barcode_daten
+    # Bild mit OpenCV laden
+    bild = cv2.imread(bild_pfad)
+
+    # Barcode-Decoder initialisieren
+    reader = pyzxing.BarCodeReader()
+
+    # Barcode dekodieren
+    barcode = reader.decode(bild)
+
+    if barcode:
+        return barcode[0]["parsed"]
     else:
         print("Kein Barcode gefunden.")
         return None
