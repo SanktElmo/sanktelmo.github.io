@@ -1,5 +1,4 @@
-import os
-from pyzbar.pyzbar import decode
+import pyzbar
 from PIL import Image
 
 def scan_barcode(bild_pfad):
@@ -7,7 +6,7 @@ def scan_barcode(bild_pfad):
     bild = Image.open(bild_pfad)
     
     # Barcode/QR-Code decodieren
-    barcodes = decode(bild)
+    barcodes = pyzbar.decode(bild)
     
     # Die erste gefundene Nummer ausgeben
     if barcodes:

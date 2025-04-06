@@ -1,6 +1,5 @@
 flask
 gunicorn
-pyzbar
-Pillow
-flask_cors
 opencv-python
+pillow
+requests
