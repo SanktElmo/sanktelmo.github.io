@@ -11,7 +11,7 @@ def scan_barcode(bild_pfad):
     # Barcode dekodieren
     barcode = reader.decode(bild_pfad)
 
-    print(barcode)
+    print(barcode["raw"])
 
     if barcode:
         return barcode[0]["parsed"]
