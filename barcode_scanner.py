@@ -1,20 +1,19 @@
 import cv2
-from pyzbar.pyzbar import decode
+import pytesseract
+import re
 
-def scan_barcode(bild_pfad):
-    # Bild mit OpenCV laden
-    bild = cv2.imread(bild_pfad)
+def scan_barcode(image_path):
+    # Bild laden und in Graustufen umwandeln
+    image = cv2.imread(image_path)
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-    # Barcode dekodieren
-    barcodes = decode(bild)
+    # OCR mit Tesseract
+    text = pytesseract.image_to_string(gray)
 
-    print(f"Gefundene Barcodes: {len(barcodes)}")
+    # Barcodes finden: z.B. 12–13 Ziffern für EAN/UPC
+    matches = re.findall(r'\b\d{12,13}\b', text)
 
-    for barcode in barcodes:
-        barcode_daten = barcode.data.decode("utf-8")
-        barcode_typ = barcode.type
-        print(f"Typ: {barcode_typ}, Daten: {barcode_daten}")
-        return barcode_daten  # Nur den ersten Barcode zurückgeben
+    print("OCR Text:", text)
+    print("Gefundene Barcodes:", matches)
 
-    print("Kein Barcode gefunden.")
-    return None
+    return matches[0] if matches else None

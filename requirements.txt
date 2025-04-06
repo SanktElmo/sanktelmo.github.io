@@ -3,6 +3,6 @@ gunicorn
 opencv-python
 pillow
 requests
-pyzbar
 opencv-python
+pytesseract
 flask_cors
