@@ -1,5 +1,5 @@
 flask
 gunicorn
 pyzbar
-PIL
+Pillow
 flask_cors
