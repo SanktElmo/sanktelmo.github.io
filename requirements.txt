@@ -3,3 +3,4 @@ gunicorn
 pyzbar
 Pillow
 flask_cors
+opencv-python
