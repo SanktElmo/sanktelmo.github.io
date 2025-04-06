@@ -9,7 +9,9 @@ def scan_barcode(bild_pfad):
     reader = pyzxing.BarCodeReader()
 
     # Barcode dekodieren
-    barcode = reader.decode(bild_pfad)
+    barcode = reader.decode(bild_pfad, try_harder=True)
+
+    print(barcode)
 
     if barcode:
         return barcode[0]["parsed"]
