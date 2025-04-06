@@ -1,6 +1,5 @@
 import os
 from flask import Flask, render_template, request, jsonify
-import requests
 from flask_cors import CORS
 import barcode_scanner as bs
 import api_call as api
