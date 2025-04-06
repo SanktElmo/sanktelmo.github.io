@@ -18,7 +18,7 @@ $("#add_item_backend").change(function () {
     const formData = new FormData();
     formData.append("file", file);
 
-    fetch("http://localhost:5000/api", {
+    fetch("https://kuechensystem.onrender.com/api", {
         method: "POST",
         body: formData,
     })
